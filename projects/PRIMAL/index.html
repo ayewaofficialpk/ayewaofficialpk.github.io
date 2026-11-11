@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#030604">
+
+  <title>PRIMAL | Enter The Lost World</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #c6a96b;
+      --light-gold: #f0dba4;
+      --green: #b5d18b;
+      --dark-green: #172519;
+      --purple: #8064a8;
+      --brown: #79553b;
+      --white: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #030604;
+      color: var(--white);
+      font-family: 'Oswald', Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* MAIN BACKGROUND */
+
+    .main {
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100svh;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      padding: 35px 20px 45px;
+
+      background: #030604;
+    }
+
+    /* LOCAL HTML IMAGES */
+
+    .main-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 43%;
+      pointer-events: none;
+      z-index: -2;
+      animation: backgroundReveal 5s ease-in-out both;
+    }
+
+    .main-image--forest {
+      z-index: -2;
+    }
+
+    .main-image--logo {
+      z-index: -1;
+    }
+
+    /* OVERLAY */
+
+    .main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+
+      background:
+        linear-gradient(180deg,
+          rgba(3, 6, 4, 0.18) 0%,
+          rgba(14, 25, 14, 0.20) 35%,
+          rgba(29, 19, 15, 0.30) 65%,
+          rgba(3, 4, 3, 0.86) 100%),
+
+        radial-gradient(ellipse at 50% 18%,
+          rgba(108, 145, 72, 0.22),
+          transparent 44%),
+
+        radial-gradient(ellipse at 10% 65%,
+          rgba(111, 75, 48, 0.16),
+          transparent 38%),
+
+        radial-gradient(ellipse at 90% 55%,
+          rgba(103, 72, 143, 0.14),
+          transparent 40%),
+
+        linear-gradient(90deg,
+          rgba(0, 0, 0, 0.40),
+          transparent 30%,
+          transparent 70%,
+          rgba(0, 0, 0, 0.40));
+    }
+
+    /* BORDER */
+
+    .main::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      z-index: 5;
+      pointer-events: none;
+
+      border: 1px solid rgba(198, 169, 107, 0.28);
+
+      box-shadow:
+        inset 0 0 45px rgba(0, 0, 0, 0.28),
+        0 0 25px rgba(0, 0, 0, 0.12);
+    }
+
+    /* CENTER CONTENT */
+
+    .center-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      text-align: center;
+      padding-top: 65px;
+
+      animation: contentReveal 1.4s ease both;
+    }
+
+    .small-title {
+      color: var(--light-gold);
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+
+      text-shadow:
+        0 2px 15px #000,
+        0 0 18px rgba(240, 219, 164, 0.18);
+    }
+
+    .subtitle {
+      margin-top: 20px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 4px;
+
+      text-shadow: 0 2px 12px #000;
+    }
+
+    .heading-line {
+      width: 98px;
+      height: 3px;
+      position: relative;
+      overflow: hidden;
+      margin: 24px auto 0;
+
+      background: linear-gradient(90deg,
+          var(--green),
+          var(--gold),
+          var(--purple),
+          var(--brown));
+
+      box-shadow:
+        0 0 12px rgba(198, 169, 107, 0.25),
+        0 0 20px rgba(128, 100, 168, 0.12);
+    }
+
+    .heading-line::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background: linear-gradient(90deg,
+          transparent,
+          #fff8dc,
+          transparent);
+
+      transform: translateX(-100%);
+      animation: lineShine 3s ease-in-out 1.5s infinite;
+    }
+
+    .producer {
+      margin-top: 15px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+
+      text-shadow: 0 2px 10px #000;
+    }
+
+    /* LOCATION CARDS */
+
+    .locations {
+      position: relative;
+      z-index: 3;
+
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+
+      gap: 35px;
+      width: min(90%, 1050px);
+
+      margin: 380px auto 0;
+    }
+
+    .location {
+      min-width: 0;
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+
+      text-align: center;
+      text-decoration: none;
+      color: var(--white);
+
+      opacity: 0;
+
+      animation: locationReveal 1s ease forwards;
+
+      transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+    }
+
+    .location:nth-child(1) {
+      animation-delay: 0.25s;
+    }
+
+    .location:nth-child(2) {
+      animation-delay: 0.45s;
+    }
+
+    .location:nth-child(3) {
+      animation-delay: 0.65s;
+    }
+
+    .location:hover {
+      transform: translateY(-12px) scale(1.035);
+      filter: brightness(1.12);
+    }
+
+    .location:focus-visible {
+      outline: 2px solid var(--light-gold);
+      outline-offset: 8px;
+      border-radius: 8px;
+    }
+
+    /* FLAG BORDER */
+
+    .flag-border {
+      width: 145px;
+      height: 145px;
+      padding: 5px;
+      position: relative;
+      flex-shrink: 0;
+      border-radius: 50%;
+
+      background: linear-gradient(135deg,
+          #f0dba4 0%,
+          #6d5731 20%,
+          #54764a 40%,
+          #8064a8 60%,
+          #79553b 80%,
+          #c6a96b 100%);
+
+      background-size: 250% 250%;
+
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.65),
+        0 0 18px rgba(198, 169, 107, 0.14),
+        inset 0 0 10px rgba(255, 255, 255, 0.12);
+
+      animation: borderFlow 8s ease-in-out infinite alternate;
+
+      transition:
+        box-shadow 0.45s ease,
+        transform 0.45s ease;
+    }
+
+    .location:hover .flag-border {
+      transform: rotate(3deg);
+
+      box-shadow:
+        0 0 35px rgba(198, 169, 107, 0.38),
+        0 0 45px rgba(92, 143, 62, 0.20),
+        0 0 35px rgba(128, 100, 168, 0.18),
+        0 15px 35px rgba(0, 0, 0, 0.7);
+    }
+
+    .flag-border::before {
+      content: "";
+      position: absolute;
+      inset: -7px;
+      border-radius: 50%;
+
+      border: 1px solid rgba(198, 169, 107, 0.35);
+
+      transition:
+        inset 0.4s ease,
+        border-color 0.4s ease;
+    }
+
+    .location:hover .flag-border::before {
+      inset: -11px;
+      border-color: rgba(240, 219, 164, 0.75);
+    }
+
+    /* FLAGS */
+
+    .flag {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+
+      border: 2px solid rgba(15, 25, 13, 0.9);
+    }
+
+    .thailand {
+      background: linear-gradient(to bottom,
+          #ed1c24 0%,
+          #ed1c24 17%,
+          #fff 17%,
+          #fff 33%,
+          #241e63 33%,
+          #241e63 67%,
+          #fff 67%,
+          #fff 83%,
+          #ed1c24 83%,
+          #ed1c24 100%);
+    }
+
+    .italy {
+      background: linear-gradient(to right,
+          #009246 0%,
+          #009246 33.33%,
+          #fff 33.33%,
+          #fff 66.66%,
+          #ce2b37 66.66%,
+          #ce2b37 100%);
+    }
+
+    .singapore {
+      background: linear-gradient(to bottom,
+          #ed2939 0%,
+          #ed2939 50%,
+          #fff 50%,
+          #fff 100%);
+    }
+
+    .singapore::before {
+      content: "☾";
+      position: absolute;
+      top: 0;
+      left: 19%;
+
+      color: #fff;
+      font-size: 29px;
+      line-height: 1.1;
+    }
+
+    .singapore::after {
+      content: "★ ★ ★\A ★ ★";
+      white-space: pre;
+      position: absolute;
+      top: 8px;
+      left: 48%;
+
+      color: #fff;
+      font-size: 6px;
+      line-height: 7px;
+    }
+
+    /* CITY TEXT */
+
+    .city {
+      margin-top: 17px;
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: 1px;
+
+      transition:
+        color 0.35s ease,
+        letter-spacing 0.35s ease;
+    }
+
+    .location:hover .city {
+      color: var(--light-gold);
+      letter-spacing: 2px;
+    }
+
+    .country {
+      margin-top: 6px;
+
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+
+      text-shadow: 0 2px 8px #000;
+
+      transition: color 0.35s ease;
+    }
+
+    .location:hover .country {
+      color: var(--light-gold);
+    }
+
+    /* FOOTER */
+
+    .footer-text {
+      position: relative;
+      z-index: 2;
+
+      margin-top: 70px;
+      padding: 0 15px;
+
+      color: rgba(224, 217, 192, 0.8);
+      text-align: center;
+
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      line-height: 1.9;
+
+      animation: contentReveal 1.5s 1s ease both;
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes backgroundReveal {
+      0% {
+        object-position: center 34%;
+      }
+
+      100% {
+        object-position: center 50%;
+      }
+    }
+
+    @keyframes contentReveal {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes locationReveal {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes borderFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+
+    @keyframes lineShine {
+
+      0%,
+      15% {
+        transform: translateX(-100%);
+      }
+
+      65%,
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    /* TABLET */
+
+    @media (max-width: 1024px) {
+
+      .locations {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 55px 30px;
+        width: min(85%, 700px);
+        margin-top: 240px;
+      }
+
+      .location:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+      }
+
+      .flag-border {
+        width: 135px;
+        height: 135px;
+      }
+
+      .center-content {
+        padding-top: 55px;
+      }
+
+      .city {
+        font-size: 19px;
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .main {
+        padding: 20px 12px 30px;
+      }
+
+      .center-content {
+        padding-top: 65px;
+      }
+
+      .small-title {
+        font-size: 11px;
+        letter-spacing: 3px;
+        line-height: 1.8;
+      }
+
+      .subtitle {
+        margin-top: 16px;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        line-height: 1.8;
+      }
+
+      .heading-line {
+        margin-top: 18px;
+      }
+
+      .producer {
+        margin-top: 12px;
+        font-size: 9px;
+        letter-spacing: 2px;
+        line-height: 1.8;
+      }
+
+      .locations {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 42px 12px;
+        width: 100%;
+        margin-top: 160px;
+      }
+
+      .location:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+      }
+
+      .flag-border {
+        width: 105px;
+        height: 105px;
+        padding: 4px;
+      }
+
+      .flag-border::before {
+        inset: -5px;
+      }
+
+      .city {
+        margin-top: 17px;
+        font-size: 14px;
+        letter-spacing: 0;
+      }
+
+      .location:hover .city {
+        letter-spacing: 0.5px;
+      }
+
+      .country {
+        margin-top: 5px;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+      }
+
+      .footer-text {
+        margin-top: 50px;
+        font-size: 9px;
+        letter-spacing: 1.5px;
+      }
+
+      .main::after {
+        inset: 7px;
+      }
+    }
+
+    /* SMALL MOBILE */
+
+    @media (max-width: 360px) {
+
+      .flag-border {
+        width: 90px;
+        height: 90px;
+      }
+
+      .city {
+        font-size: 12px;
+      }
+
+      .country {
+        font-size: 9px;
+      }
+
+      .locations {
+        gap: 35px 8px;
+        margin-top: 135px;
+      }
+    }
+
+    /* REDUCED MOTION */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .location {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="main">
+
+    <!-- LOCAL BACKGROUND IMAGES -->
+
+    <img src="../Assets/DINO LOGO 5.jpg" class="main-image main-image--logo" alt="" aria-hidden="true">
+
+    <img src="../Assets/jungle.jpg" class="main-image main-image--forest" alt="" aria-hidden="true">
+
+    <!-- HEADING -->
+
+    <section class="center-content">
+
+      <p class="small-title">
+        Welcome To The Adventure
+      </p>
+
+      <p class="subtitle">
+        ENTER A WORLD BEYOND IMAGINATION
+      </p>
+
+      <div class="heading-line"></div>
+
+      <p class="producer">
+        AN EPIC PREHISTORIC EXPERIENCE
+      </p>
+
+    </section>
+
+    <!-- LOCATIONS -->
+
+    <section class="locations">
+
+      <a href="BANGKOK.html" class="location" aria-label="Explore Bangkok, Thailand">
+
+        <div class="flag-border">
+          <div class="flag thailand"></div>
+        </div>
+
+        <h2 class="city">BANGKOK</h2>
+        <p class="country">Thailand</p>
+
+      </a>
+
+      <a href="MILANO.html" class="location" aria-label="Explore Milano, Italy">
+
+        <div class="flag-border">
+          <div class="flag italy"></div>
+        </div>
+
+        <h2 class="city">MILANO</h2>
+        <p class="country">Italy</p>
+
+      </a>
+
+      <a href="SINGAPORE.html" class="location" aria-label="Explore Singapore">
+
+        <div class="flag-border">
+          <div class="flag singapore"></div>
+        </div>
+
+        <h2 class="city">SINGAPORE</h2>
+        <p class="country">Singapore</p>
+
+      </a>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <p class="footer-text">
+      EXPLORE THE UNKNOWN • DISCOVER THE PREHISTORIC WORLD
+    </p>
+
+  </main>
+
+</body>
+
+</html>
