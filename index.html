@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#020609">
 <title>AYEWA | Digital Portfolio</title>
-<meta name="description" content="Welcome to AYEWA — creative digital portfolio, skills, projects and services.">
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
@@ -17,18 +16,21 @@
  --panel:#071510;
  --white:#eafff3;
 }
+
 * {
  margin:0;
  padding:0;
  box-sizing:border-box;
  scroll-behavior:smooth;
 }
+
 body {
  background:var(--bg);
  color:var(--white);
  font-family:'Orbitron',sans-serif;
  overflow-x:hidden;
 }
+
 #matrix {
  position:fixed;
  inset:0;
@@ -36,8 +38,8 @@ body {
  height:100%;
  z-index:-5;
  opacity:.22;
- pointer-events:none;
 }
+
 body:before {
  content:"";
  position:fixed;
@@ -48,6 +50,7 @@ body:before {
  radial-gradient(circle at 50% 30%,#00ff7512,transparent 45%),
  radial-gradient(circle at 80% 80%,#0077ff12,transparent 40%);
 }
+
 body:after {
  content:"";
  position:fixed;
@@ -57,7 +60,9 @@ body:after {
  background:linear-gradient(transparent 50%,#00ff7505 50%);
  background-size:100% 4px;
 }
+
 a {text-decoration:none;color:inherit}
+
 .navbar {
  position:fixed;
  top:0;
@@ -71,6 +76,7 @@ a {text-decoration:none;color:inherit}
  backdrop-filter:blur(15px);
  border-bottom:1px solid #00ff7533;
 }
+
 .brand {
  color:var(--green);
  font-size:22px;
@@ -78,20 +84,25 @@ a {text-decoration:none;color:inherit}
  letter-spacing:3px;
  text-shadow:0 0 15px var(--green);
 }
+
 .brand span {color:var(--blue)}
+
 .nav-links {
  display:flex;
  gap:25px;
 }
+
 .nav-links a {
  font-size:10px;
  color:#b8e9d0;
  transition:.3s;
 }
+
 .nav-links a:hover {
  color:var(--green);
  text-shadow:0 0 12px var(--green);
 }
+
 .menu-btn {
  display:none;
  background:none;
@@ -99,12 +110,13 @@ a {text-decoration:none;color:inherit}
  border:1px solid var(--green);
  padding:8px 12px;
  font-size:20px;
- cursor:pointer;
 }
+
 section {
  padding:100px 7%;
  scroll-margin-top:65px;
 }
+
 .hero {
  min-height:100vh;
  display:flex;
@@ -114,12 +126,14 @@ section {
  text-align:center;
  padding-top:130px;
 }
+
 .hero-tag {
  color:var(--blue);
  font-size:11px;
  letter-spacing:5px;
  margin-bottom:25px;
 }
+
 .logo-scene {
  width:min(90vw,550px);
  height:230px;
@@ -129,6 +143,7 @@ section {
  perspective:1000px;
  transform-style:preserve-3d;
 }
+
 .logo-ring {
  position:absolute;
  width:90%;
@@ -139,6 +154,7 @@ section {
  box-shadow:0 0 15px var(--green),inset 0 0 20px #00ff7544;
  animation:rotateRing 8s linear infinite;
 }
+
 .logo-ring.two {
  width:70%;
  height:120%;
@@ -147,6 +163,7 @@ section {
  transform:rotateY(65deg);
  animation:rotateRing2 7s linear infinite;
 }
+
 .logo-ring.three {
  width:100%;
  height:100%;
@@ -154,6 +171,7 @@ section {
  border-color:#00ff7566;
  animation:rotateRing 15s linear infinite reverse;
 }
+
 .main-logo {
  z-index:2;
  font-size:clamp(55px,13vw,110px);
@@ -167,12 +185,15 @@ section {
  filter:drop-shadow(0 0 15px #00ff75);
  animation:shine 5s linear infinite,logoFloat 4s ease-in-out infinite;
 }
+
 .hero h1 {
  font-size:clamp(23px,5vw,38px);
  letter-spacing:7px;
  margin-top:20px;
 }
+
 .hero h1 span {color:var(--green)}
+
 .hero-description {
  color:#a4cdb7;
  font-family:'Share Tech Mono',monospace;
@@ -181,6 +202,7 @@ section {
  line-height:1.8;
  max-width:600px;
 }
+
 .buttons {
  display:flex;
  gap:15px;
@@ -188,8 +210,8 @@ section {
  flex-wrap:wrap;
  margin-top:35px;
 }
+
 .btn {
- display:inline-block;
  padding:14px 25px;
  border:1px solid var(--green);
  color:var(--green);
@@ -198,39 +220,47 @@ section {
  letter-spacing:2px;
  transition:.3s;
 }
+
 .btn:hover {
  background:var(--green);
  color:#001008;
  box-shadow:0 0 25px var(--green);
  transform:translateY(-4px);
 }
+
 .btn.blue {
  border-color:var(--blue);
  color:var(--blue);
 }
+
 .btn.blue:hover {
  background:var(--blue);
  color:#001018;
  box-shadow:0 0 25px var(--blue);
 }
+
 .section-heading {
  font-size:clamp(20px,4vw,28px);
  letter-spacing:4px;
  margin-bottom:15px;
 }
+
 .section-heading span {color:var(--green)}
+
 .subheading {
  color:var(--blue);
  font-family:'Share Tech Mono',monospace;
  font-size:13px;
  margin-bottom:40px;
 }
+
 .about-grid {
  display:grid;
  grid-template-columns:1fr 1fr;
  gap:35px;
  align-items:center;
 }
+
 .about-visual {
  min-height:300px;
  display:grid;
@@ -240,6 +270,7 @@ section {
  position:relative;
  overflow:hidden;
 }
+
 .about-symbol {
  font-size:100px;
  font-weight:900;
@@ -247,6 +278,7 @@ section {
  text-shadow:0 0 30px var(--green);
  animation:logoFloat 4s infinite;
 }
+
 .about-text p {
  font-family:'Share Tech Mono',monospace;
  color:#b4d9c5;
@@ -254,6 +286,7 @@ section {
  line-height:2;
  margin-bottom:20px;
 }
+
 .info-card {
  border-left:2px solid var(--green);
  padding:10px 15px;
@@ -262,39 +295,46 @@ section {
  margin-top:12px;
  background:#00ff7508;
 }
+
 .skills-grid {
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
  gap:20px;
 }
+
 .skill-card {
  padding:25px;
  border:1px solid #00ff7544;
  background:linear-gradient(145deg,#081810dd,#061019dd);
  transition:.3s;
 }
+
 .skill-card:hover {
  transform:translateY(-7px);
  border-color:var(--blue);
  box-shadow:0 0 20px #00cfff33;
 }
+
 .skill-card h3 {
  font-size:13px;
  color:var(--blue);
  margin-bottom:20px;
 }
+
 .skill-card p {
  font-size:11px;
  margin-bottom:10px;
  display:flex;
  justify-content:space-between;
 }
+
 .progress {
  height:6px;
  background:#ffffff12;
  overflow:hidden;
  margin-bottom:22px;
 }
+
 .progress span {
  display:block;
  height:100%;
@@ -303,12 +343,14 @@ section {
  box-shadow:0 0 12px var(--green);
  transition:width 1.5s ease;
 }
+
 .projects-grid {
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
  gap:22px;
  perspective:1000px;
 }
+
 .project {
  min-height:270px;
  padding:27px;
@@ -318,27 +360,32 @@ section {
  transition:.4s;
  overflow:hidden;
 }
+
 .project:hover {
  transform:rotateY(5deg) rotateX(4deg) translateY(-8px);
  border-color:var(--blue);
  box-shadow:0 0 25px #00cfff33;
 }
+
 .project-number {
  font-size:35px;
  color:#00ff7555;
  font-weight:900;
 }
+
 .project h3 {
  font-size:15px;
  color:var(--green);
  margin:20px 0 15px;
 }
+
 .project p {
  font-family:'Share Tech Mono',monospace;
  color:#b1d4c1;
  line-height:1.8;
  font-size:13px;
 }
+
 .project-label {
  display:inline-block;
  color:var(--blue);
@@ -347,11 +394,13 @@ section {
  padding:7px 10px;
  margin-top:20px;
 }
+
 .services-grid {
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
  gap:20px;
 }
+
 .service {
  padding:30px 22px;
  text-align:center;
@@ -359,28 +408,33 @@ section {
  background:#06130e;
  transition:.4s;
 }
+
 .service:hover {
  transform:translateY(-8px);
  box-shadow:0 0 25px #00ff7533;
  border-color:var(--green);
 }
+
 .service-icon {
  font-size:40px;
  color:var(--green);
  margin-bottom:20px;
  text-shadow:0 0 15px var(--green);
 }
+
 .service h3 {
  font-size:13px;
  color:var(--blue);
  margin-bottom:15px;
 }
+
 .service p {
  color:#a6cbb7;
  font-family:'Share Tech Mono',monospace;
  font-size:12px;
  line-height:1.8;
 }
+
 .contact-box {
  max-width:750px;
  margin:auto;
@@ -389,6 +443,7 @@ section {
  background:linear-gradient(145deg,#071a12,#06101a);
  box-shadow:0 0 35px #00ff7510;
 }
+
 .contact-box input,
 .contact-box textarea {
  width:100%;
@@ -400,28 +455,24 @@ section {
  font-family:'Share Tech Mono',monospace;
  outline:none;
 }
+
 .contact-box input:focus,
 .contact-box textarea:focus {
  border-color:var(--blue);
  box-shadow:0 0 12px #00cfff33;
 }
+
 .contact-box textarea {
  height:130px;
  resize:vertical;
 }
+
 .contact-box button {
  width:100%;
  cursor:pointer;
  font-family:inherit;
 }
-.contact-email {
- color:var(--blue);
- font-family:'Share Tech Mono',monospace;
- font-size:12px;
- text-align:center;
- margin-top:20px;
- display:block;
-}
+
 footer {
  padding:35px 10px;
  text-align:center;
@@ -430,30 +481,37 @@ footer {
  font-size:11px;
  line-height:2.5;
 }
+
 .reveal {
  opacity:0;
  transform:translateY(35px);
  transition:all .8s ease;
 }
+
 .reveal.visible {
  opacity:1;
  transform:translateY(0);
 }
+
 @keyframes rotateRing {
  from {transform:rotateX(65deg) rotateZ(0)}
  to {transform:rotateX(65deg) rotateZ(360deg)}
 }
+
 @keyframes rotateRing2 {
  from {transform:rotateY(65deg) rotateZ(0)}
  to {transform:rotateY(65deg) rotateZ(-360deg)}
 }
+
 @keyframes shine {
  to {background-position:300% center}
 }
+
 @keyframes logoFloat {
  0%,100% {transform:translateY(0) rotateX(0)}
  50% {transform:translateY(-9px) rotateX(8deg)}
 }
+
 @media(max-width:750px) {
  .navbar {padding:17px 5%}
  .menu-btn {display:block}
@@ -483,9 +541,13 @@ footer {
 
 <canvas id="matrix"></canvas>
 
+<!-- NAVIGATION -->
 <nav class="navbar">
+
  <a href="#home" class="brand">AYEWA<span>_</span></a>
- <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+
+ <button class="menu-btn" id="menuBtn">☰</button>
+
  <div class="nav-links" id="navLinks">
   <a href="#home">HOME</a>
   <a href="#about">ABOUT</a>
@@ -494,148 +556,194 @@ footer {
   <a href="#services">SERVICES</a>
   <a href="#contact">CONTACT</a>
  </div>
+
 </nav>
 
+<!-- HOME -->
 <section class="hero" id="home">
+
  <div class="hero-tag">// WELCOME TO MY DIGITAL WORLD</div>
+
  <div class="logo-scene">
   <div class="logo-ring"></div>
   <div class="logo-ring two"></div>
   <div class="logo-ring three"></div>
   <div class="main-logo">AYEWA</div>
  </div>
+
  <h1>CREATIVE <span>PORTFOLIO</span></h1>
+
  <p class="hero-description">
   Exploring creativity, technology and futuristic digital experiences.
   Welcome to my personal portfolio.
  </p>
+
  <div class="buttons">
   <a href="#projects" class="btn">EXPLORE PROJECTS</a>
   <a href="#contact" class="btn blue">CONTACT ME</a>
  </div>
+
 </section>
 
+<!-- ABOUT -->
 <section id="about">
+
  <div class="reveal">
   <h2 class="section-heading">01 / <span>ABOUT ME</span></h2>
   <p class="subheading">DISCOVER MY DIGITAL JOURNEY</p>
  </div>
+
  <div class="about-grid">
+
   <div class="about-visual reveal">
    <div class="about-symbol">A</div>
   </div>
+
   <div class="about-text reveal">
    <h2 class="section-heading">HELLO, I'M <span>AYEWA</span></h2>
+
    <p>
     Welcome to my personal portfolio. This is where creativity,
     innovation and digital design come together.
     I enjoy exploring modern technology and creating
     unique digital experiences.
    </p>
+
    <div class="info-card">IDENTITY : AYEWA</div>
    <div class="info-card">INTEREST : DIGITAL CREATIVITY</div>
    <div class="info-card">STYLE : FUTURISTIC DESIGN</div>
   </div>
+
  </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
+
  <div class="reveal">
   <h2 class="section-heading">02 / <span>MY SKILLS</span></h2>
   <p class="subheading">MY CREATIVE TOOLKIT</p>
  </div>
+
  <div class="skills-grid">
+
   <div class="skill-card reveal">
    <h3>WEB DESIGN</h3>
    <p><span>HTML / CSS</span><span>90%</span></p>
    <div class="progress"><span data-width="90%"></span></div>
+
    <p><span>UI / UX DESIGN</span><span>85%</span></p>
    <div class="progress"><span data-width="85%"></span></div>
   </div>
+
   <div class="skill-card reveal">
    <h3>DEVELOPMENT</h3>
    <p><span>JAVASCRIPT</span><span>75%</span></p>
    <div class="progress"><span data-width="75%"></span></div>
+
    <p><span>RESPONSIVE DESIGN</span><span>90%</span></p>
    <div class="progress"><span data-width="90%"></span></div>
   </div>
+
   <div class="skill-card reveal">
    <h3>CREATIVITY</h3>
    <p><span>GRAPHIC DESIGN</span><span>80%</span></p>
    <div class="progress"><span data-width="80%"></span></div>
+
    <p><span>DIGITAL IDEAS</span><span>85%</span></p>
    <div class="progress"><span data-width="85%"></span></div>
   </div>
+
  </div>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects">
+
  <div class="reveal">
   <h2 class="section-heading">03 / <span>MY PROJECTS</span></h2>
   <p class="subheading">SELECTED DIGITAL CREATIONS</p>
  </div>
+
  <div class="projects-grid">
+
   <div class="project reveal">
    <div class="project-number">01</div>
    <h3>FUTURISTIC WEBSITE</h3>
    <p>A modern digital website experience with neon effects and responsive design.</p>
    <span class="project-label">WEB DESIGN</span>
   </div>
+
   <div class="project reveal">
    <div class="project-number">02</div>
    <h3>3D LOGO CONCEPT</h3>
    <p>A futuristic visual identity featuring holographic effects and animation.</p>
    <span class="project-label">3D DESIGN</span>
   </div>
+
   <div class="project reveal">
    <div class="project-number">03</div>
    <h3>DIGITAL PORTFOLIO</h3>
    <p>A premium portfolio concept with cinematic visuals and interactive elements.</p>
    <span class="project-label">UI / UX</span>
   </div>
+
  </div>
 </section>
 
+<!-- SERVICES -->
 <section id="services">
+
  <div class="reveal">
   <h2 class="section-heading">04 / <span>MY SERVICES</span></h2>
   <p class="subheading">CREATIVE DIGITAL SOLUTIONS</p>
  </div>
+
  <div class="services-grid">
+
   <div class="service reveal">
    <div class="service-icon">◇</div>
    <h3>WEB DESIGN</h3>
    <p>Modern and responsive website design concepts.</p>
   </div>
+
   <div class="service reveal">
    <div class="service-icon">✧</div>
    <h3>UI / UX DESIGN</h3>
    <p>Clean, interactive and futuristic user experiences.</p>
   </div>
+
   <div class="service reveal">
    <div class="service-icon">◈</div>
    <h3>LOGO DESIGN</h3>
    <p>Creative digital identity and visual branding concepts.</p>
   </div>
+
  </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
+
  <div class="reveal" style="text-align:center">
   <h2 class="section-heading">05 / <span>CONTACT ME</span></h2>
   <p class="subheading">LET'S CREATE SOMETHING AMAZING</p>
  </div>
 
  <form class="contact-box reveal" id="contactForm">
-  <input type="text" id="contactName" placeholder="YOUR NAME" required>
-  <input type="email" id="contactEmail" placeholder="YOUR EMAIL" required>
-  <textarea id="contactMessage" placeholder="YOUR MESSAGE" required></textarea>
+
+  <input type="text" placeholder="YOUR NAME" required>
+
+  <input type="email" placeholder="YOUR EMAIL" required>
+
+  <textarea placeholder="YOUR MESSAGE" required></textarea>
+
   <button class="btn" type="submit">SEND MESSAGE ↗</button>
-  <p id="formStatus" style="color:#00ff75;font-size:11px;margin-top:15px;text-align:center"></p>
-  <a class="contact-email" href="mailto:ayewa.contact@gmail.com">
-   ayewa.contact@gmail.com
-  </a>
+
+  <p id="formStatus" style="color:#00ff75;font-size:11px;margin-top:15px"></p>
+
  </form>
+
 </section>
 
 <footer>
@@ -645,6 +753,7 @@ footer {
 </footer>
 
 <script>
+
 // MATRIX BACKGROUND
 const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
@@ -652,10 +761,11 @@ const fontSize=15;
 let drops=[];
 
 function resizeMatrix(){
- canvas.width=window.innerWidth;
- canvas.height=window.innerHeight;
+ canvas.width=innerWidth;
+ canvas.height=innerHeight;
  drops=Array(Math.floor(canvas.width/fontSize)).fill(1);
 }
+
 window.addEventListener("resize",resizeMatrix);
 resizeMatrix();
 
@@ -670,10 +780,14 @@ function drawMatrix(){
  drops.forEach((y,i)=>{
   const char=chars[Math.floor(Math.random()*chars.length)];
   ctx.fillText(char,i*fontSize,y*fontSize);
-  if(y*fontSize>canvas.height && Math.random()>.975) drops[i]=0;
+
+  if(y*fontSize>canvas.height && Math.random()>.975)
+   drops[i]=0;
+
   drops[i]++;
  });
 }
+
 setInterval(drawMatrix,45);
 
 // MOBILE MENU
@@ -695,6 +809,7 @@ const observer=new IntersectionObserver(entries=>{
  entries.forEach(entry=>{
   if(entry.isIntersecting){
    entry.target.classList.add("visible");
+
    entry.target.querySelectorAll(".progress span").forEach(bar=>{
     bar.style.width=bar.dataset.width;
    });
@@ -706,27 +821,13 @@ document.querySelectorAll(".reveal").forEach(el=>{
  observer.observe(el);
 });
 
-// CONTACT FORM: opens the user's email app with a prepared message
+// CONTACT DEMO
 document.getElementById("contactForm").addEventListener("submit",e=>{
  e.preventDefault();
-
- const name=document.getElementById("contactName").value.trim();
- const email=document.getElementById("contactEmail").value.trim();
- const message=document.getElementById("contactMessage").value.trim();
-
- const subject=encodeURIComponent("AYEWA Website Contact");
- const body=encodeURIComponent(
-  "Name: "+name+
-  "\nEmail: "+email+
-  "\nMessage: "+message
- );
-
  document.getElementById("formStatus").textContent=
-  "Opening your email app...";
-
- window.location.href=
-  "mailto:ayewa.contact@gmail.com?subject="+subject+"&body="+body;
+ "Thank you! Contact form design is working. Connect a form service to receive messages.";
 });
+
 </script>
 
 </body>
