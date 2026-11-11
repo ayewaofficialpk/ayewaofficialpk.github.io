@@ -732,11 +732,11 @@ footer {
 
  <form class="contact-box reveal" id="contactForm">
 
-  <input type="text" placeholder="YOUR NAME" required>
+  <input type="text" id="contactName" placeholder="YOUR NAME" minlength="2" required>
 
-  <input type="email" placeholder="YOUR EMAIL" required>
+  <input type="email" id="contactEmail" placeholder="YOUR EMAIL" required>
 
-  <textarea placeholder="YOUR MESSAGE" required></textarea>
+  <textarea id="contactMessage" placeholder="YOUR MESSAGE" minlength="5" required></textarea>
 
   <button class="btn" type="submit">SEND MESSAGE ↗</button>
 
@@ -821,14 +821,39 @@ document.querySelectorAll(".reveal").forEach(el=>{
  observer.observe(el);
 });
 
-// CONTACT DEMO
-document.getElementById("contactForm").addEventListener("submit",e=>{
+// CONTACT FORM - opens a pre-filled Gmail message
+document.getElementById("contactForm").addEventListener("submit", function(e) {
  e.preventDefault();
- document.getElementById("formStatus").textContent=
- "Thank you! Contact form design is working. Connect a form service to receive messages.";
+
+ const name = document.getElementById("contactName").value.trim();
+ const email = document.getElementById("contactEmail").value.trim();
+ const message = document.getElementById("contactMessage").value.trim();
+ const status = document.getElementById("formStatus");
+
+ if (name.length < 2 || message.length < 5) {
+  status.textContent = "Please enter a valid name and message.";
+  return;
+ }
+
+ const subject = encodeURIComponent("New Message - AYEWA Website");
+ const body = encodeURIComponent(
+  "Name: " + name +
+  "\\nEmail: " + email +
+  "\\n\\nMessage:\\n" + message
+ );
+
+ const gmailURL = "https://mail.google.com/mail/?view=cm&fs=1&to=ayewa.contact@gmail.com&su=" + subject + "&body=" + body;
+
+ status.textContent = "Opening Gmail... Please press Send in Gmail to deliver your message.";
+ const gmailTab = window.open(gmailURL, "_blank");
+
+ // If the browser blocks a new tab, open Gmail in the current tab.
+ if (!gmailTab) {
+  window.location.href = gmailURL;
+ }
 });
 
 </script>
 
 </body>
-</html>
+</html> 
